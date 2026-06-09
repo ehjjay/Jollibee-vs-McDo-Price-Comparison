@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://mcdomenuprices.com.ph/sitemap.xml
+Sitemap: https://ehjjay.github.io/Jollibee-vs-McDo-Price-Comparison/sitemap.xml
