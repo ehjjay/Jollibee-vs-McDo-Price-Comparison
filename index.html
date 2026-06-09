@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jollibee vs McDonald's Philippines Price Comparison 2025</title>
+<meta name="description" content="Compare Jollibee and McDonald's Philippines menu prices side by side. Find out which fast food offers better value for burgers, chicken, fries, and more.">
+<meta name="keywords" content="Jollibee price, McDo price, McDonald's Philippines menu price, Jollibee vs McDo, fast food price comparison Philippines">
+<meta property="og:title" content="Jollibee vs McDo Price Comparison Philippines 2025">
+<meta property="og:description" content="Compare Jollibee and McDonald's Philippines menu prices side by side.">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://mcdomenuprices.com.ph/">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Segoe UI',Arial,sans-serif;background:#f5f5f5;color:#222;padding:16px}
+  h1{text-align:center;font-size:1.4rem;margin-bottom:4px;color:#222}
+  .sub{text-align:center;color:#666;font-size:.85rem;margin-bottom:16px}
+  .filters{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:16px}
+  .filters button{padding:6px 14px;border:1.5px solid #ccc;border-radius:20px;background:#fff;cursor:pointer;font-size:.82rem;transition:.2s}
+  .filters button.active{background:#da291c;color:#fff;border-color:#da291c}
+  .search{display:block;width:100%;max-width:400px;margin:0 auto 16px;padding:8px 12px;border:1.5px solid #ccc;border-radius:8px;font-size:.9rem}
+  table{width:100%;border-collapse:collapse;background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+  thead{background:#da291c;color:#fff}
+  thead th{padding:10px 12px;font-size:.82rem;font-weight:600;text-align:left}
+  thead th.jol{background:#e31837}
+  thead th.mc{background:#ffbc0d;color:#222}
+  tbody tr:nth-child(even){background:#fafafa}
+  td{padding:9px 12px;font-size:.85rem;border-bottom:1px solid #eee}
+  td.item{font-weight:500;color:#333}
+  td.price{text-align:right;font-weight:600}
+  td.jol-price{color:#c0392b}
+  td.mc-price{color:#d4860a}
+  td.diff{text-align:right;font-size:.78rem}
+  td.cheaper-jol{color:#27ae60}
+  td.cheaper-mc{color:#2980b9}
+  td.same{color:#888}
+  .badge{display:inline-block;font-size:.7rem;padding:2px 7px;border-radius:10px;font-weight:600;margin-left:4px;vertical-align:middle}
+  .badge-jol{background:#fde8e8;color:#c0392b}
+  .badge-mc{background:#fff3cd;color:#856404}
+  .legend{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin:12px 0 4px;font-size:.78rem;color:#555}
+  .legend span{display:flex;align-items:center;gap:4px}
+  .dot{width:10px;height:10px;border-radius:50%;display:inline-block}
+  .dot-jol{background:#c0392b}
+  .dot-mc{background:#d4860a}
+  .dot-same{background:#aaa}
+  .summary{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin:16px 0}
+  .card{background:#fff;border-radius:8px;padding:12px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,.07)}
+  .card .num{font-size:1.5rem;font-weight:700}
+  .card .lbl{font-size:.75rem;color:#666;margin-top:2px}
+  .card.jol .num{color:#c0392b}
+  .card.mc .num{color:#d4860a}
+  .card.tie .num{color:#555}
+  footer{text-align:center;margin-top:20px;font-size:.78rem;color:#888;line-height:1.7}
+  footer a{color:#da291c;text-decoration:none}
+  footer a:hover{text-decoration:underline}
+  .na{color:#bbb;font-style:italic}
+  @media(max-width:500px){td,thead th{padding:7px 8px;font-size:.78rem}}
+</style>
+</head>
+<body>
+
+<h1>🍔 Jollibee vs McDo Price Comparison</h1>
+<p class="sub">Philippines 2025 · Prices in Philippine Peso (₱)</p>
+
+<input class="search" type="text" id="search" placeholder="Search menu item..." oninput="render()">
+
+<div class="filters" id="filters"></div>
+
+<div class="summary" id="summary"></div>
+
+<div class="legend">
+  <span><span class="dot dot-jol"></span> Jollibee cheaper</span>
+  <span><span class="dot dot-mc"></span> McDo cheaper</span>
+  <span><span class="dot dot-same"></span> Same / N/A</span>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>Item</th>
+      <th class="jol">Jollibee (₱)</th>
+      <th class="mc">McDo (₱)</th>
+      <th>Diff</th>
+    </tr>
+  </thead>
+  <tbody id="tbody"></tbody>
+</table>
+
+<footer>
+  <p>Prices are approximate and may vary by branch. Last updated 2025.</p>
+  <p>For the latest McDonald's menu prices, visit <a href="https://mcdomenuprices.com.ph/" target="_blank" rel="noopener">mcdomenuprices.com.ph</a>.</p>
+  <p style="margin-top:6px">© 2025 Jollibee vs McDo Price Comparison · Philippines</p>
+</footer>
+
+<script>
+const data = [
+  {cat:"Burgers",item:"Yumburger / Hamburger",jol:55,mc:59},
+  {cat:"Burgers",item:"Cheeseburger",jol:65,mc:69},
+  {cat:"Burgers",item:"Burger Steak",jol:99,mc:null},
+  {cat:"Burgers",item:"Quarter Pounder / Champ",jol:219,mc:199},
+  {cat:"Burgers",item:"Double Patty Burger",jol:229,mc:239},
+  {cat:"Chicken",item:"1-pc Chicken (solo)",jol:129,mc:109},
+  {cat:"Chicken",item:"2-pc Chicken",jol:229,mc:199},
+  {cat:"Chicken",item:"Chicken Fillet Sandwich",jol:139,mc:149},
+  {cat:"Chicken",item:"Chickenjoy Bucket (6pc)",jol:629,mc:null},
+  {cat:"Chicken",item:"McChicken",jol:null,mc:119},
+  {cat:"Meals",item:"Yumburger Meal",jol:135,mc:null},
+  {cat:"Meals",item:"Value Meal (burger+fries+drink)",jol:189,mc:179},
+  {cat:"Meals",item:"Chicken Joy Meal",jol:199,mc:179},
+  {cat:"Meals",item:"Big Mac Meal",jol:null,mc:229},
+  {cat:"Meals",item:"Jolly Spaghetti Meal",jol:169,mc:null},
+  {cat:"Sides",item:"Regular Fries",jol:79,mc:75},
+  {cat:"Sides",item:"Large Fries",jol:99,mc:95},
+  {cat:"Sides",item:"Mashed Potato",jol:55,mc:null},
+  {cat:"Sides",item:"Mozzarella Sticks",jol:89,mc:null},
+  {cat:"Sides",item:"Apple Pie / Peach Mango Pie",jol:49,mc:45},
+  {cat:"Breakfast",item:"Breakfast Meal (egg+rice+meat)",jol:139,mc:129},
+  {cat:"Breakfast",item:"Hotdog Sandwich",jol:79,mc:null},
+  {cat:"Breakfast",item:"Big Breakfast",jol:null,mc:179},
+  {cat:"Drinks",item:"Regular Softdrink",jol:55,mc:49},
+  {cat:"Drinks",item:"Large Softdrink",jol:75,mc:69},
+  {cat:"Drinks",item:"McFloat / Jollibee Float",jol:79,mc:75},
+  {cat:"Drinks",item:"Coffee (hot, regular)",jol:55,mc:65},
+  {cat:"Desserts",item:"Sundae / Ice Cream Cup",jol:39,mc:35},
+  {cat:"Desserts",item:"McFlurry / Twirl",jol:89,mc:79},
+  {cat:"Desserts",item:"Halo-Halo",jol:129,mc:null},
+];
+
+const cats = ["All", ...new Set(data.map(d=>d.cat))];
+let active = "All";
+
+function fmt(v){return v==null?'<span class="na">N/A</span>':"₱"+v;}
+function diffCell(jol,mc){
+  if(jol==null||mc==null)return '<span class="na">—</span>';
+  const d=jol-mc;
+  if(d===0)return '<span class="same">Same</span>';
+  if(d<0)return `<span class="cheaper-jol">Jollibee ₱${Math.abs(d)} less</span>`;
+  return `<span class="cheaper-mc">McDo ₱${Math.abs(d)} less</span>`;
+}
+function diffClass(jol,mc){
+  if(jol==null||mc==null)return"same";
+  if(jol<mc)return"cheaper-jol";
+  if(mc<jol)return"cheaper-mc";
+  return"same";
+}
+
+function buildFilters(){
+  const el=document.getElementById("filters");
+  el.innerHTML=cats.map(c=>`<button class="${c===active?'active':''}" onclick="setcat('${c}')">${c}</button>`).join('');
+}
+
+function setcat(c){active=c;buildFilters();render();}
+
+function render(){
+  const q=document.getElementById("search").value.toLowerCase();
+  const rows=data.filter(d=>(active==="All"||d.cat===active)&&d.item.toLowerCase().includes(q));
+  document.getElementById("tbody").innerHTML=rows.map(d=>`
+    <tr>
+      <td class="item">${d.item}<span class="badge badge-${d.cat.toLowerCase()}" style="display:none"></span></td>
+      <td class="price jol-price">${fmt(d.jol)}</td>
+      <td class="price mc-price">${fmt(d.mc)}</td>
+      <td class="diff ${diffClass(d.jol,d.mc)}">${diffCell(d.jol,d.mc)}</td>
+    </tr>`).join('');
+  buildSummary(rows);
+}
+
+function buildSummary(rows){
+  const comparable=rows.filter(d=>d.jol!=null&&d.mc!=null);
+  const jolWins=comparable.filter(d=>d.jol<d.mc).length;
+  const mcWins=comparable.filter(d=>d.mc<d.jol).length;
+  const ties=comparable.filter(d=>d.jol===d.mc).length;
+  document.getElementById("summary").innerHTML=`
+    <div class="card jol"><div class="num">${jolWins}</div><div class="lbl">Jollibee cheaper</div></div>
+    <div class="card mc"><div class="num">${mcWins}</div><div class="lbl">McDo cheaper</div></div>
+    <div class="card tie"><div class="num">${ties}</div><div class="lbl">Same price</div></div>
+    <div class="card"><div class="num">${comparable.length}</div><div class="lbl">Items compared</div></div>`;
+}
+
+buildFilters();render();
+</script>
+</body>
+</html>
